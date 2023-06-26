@@ -11,3 +11,4 @@ gem 'webrick'
 gem 'rest-client'
 gem 'dotenv'
 gem 'pry-byebug'
+gem "ruby-openai"

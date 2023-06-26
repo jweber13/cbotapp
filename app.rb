@@ -8,7 +8,7 @@ require 'line/bot'
 
 require_relative 'imagga'
 require_relative 'weather_api'
-require_relative 'tokyo_events_api'
+require_relative 'open_ai_api'
 
 def client
   @client ||= Line::Bot::Client.new do |config|
@@ -31,13 +31,14 @@ def bot_answer_to(message, user_name)
     ['sushi', 'tacos', 'curry', 'pad thai', 'kebab', 'spaghetti', 'burger'].sample
   elsif message.downcase.include?('events')
     # call events API in tokyo_events.rb
-    fetch_tokyo_events
+    fetch_chat(message)
   elsif message.match?(/([\p{Hiragana}\p{Katakana}\p{Han}]+)/)
     # respond in japanese!
     bot_jp_answer_to(message, user_name)
   elsif message.end_with?('?')
     # respond if a user asks a question
-    "Good question, #{user_name}!"
+    # "Good question, #{user_name}!"
+    fetch_chat(message)
   else
     ["I couldn't agree more.", 'Great to hear that.', 'Interesting.'].sample
   end

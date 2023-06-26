@@ -22,7 +22,7 @@ def fetch_weather(message)
   rescue OpenURI::HTTPError => e
     return { mostly: '', temps: '', report: 'No weather forecast for this city...' }
   end
-  data = JSON.parse(data_serialized) #['daily'][0..3]
+  data = JSON.parse(data_serialized)
 
   # Retrieve the current weather information
   current_weather = data['list'][0]
