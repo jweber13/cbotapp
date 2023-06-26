@@ -27,8 +27,8 @@ def fetch_weather(message)
   # Retrieve the current weather information
   current_weather = data['list'][0]
 
-  temperature = current_weather['main']['temp']
-  feels_like = current_weather['main']['feels_like']
+  temperature = (current_weather['main']['temp']/10).round(2)
+  feels_like = (current_weather['main']['feels_like']/10).round(2)
   weather_description = current_weather['weather'][0]['description']
   humidity = current_weather['main']['humidity']
 
