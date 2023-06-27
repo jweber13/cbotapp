@@ -11,8 +11,7 @@ def fetch_chat(prompt)
     parameters: {
       model: "gpt-3.5-turbo",
       messages: [{ role: "user", content: prompt_to_send }],
-      max_tokens: 500,
-      temperature: 0.7
+      max_tokens: 500
     })
   return response["choices"][0]["message"]["content"]
 end
@@ -26,8 +25,7 @@ def fetch_chat_j(prompt)
     parameters: {
       model: "gpt-3.5-turbo",
       messages: [{ role: "user", content: prompt_to_send }],
-      max_tokens: 500,
-      temperature: 0.7
+      max_tokens: 500
     })
   return response["choices"][0]["message"]["content"]
 end
