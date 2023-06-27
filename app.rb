@@ -18,8 +18,6 @@ def client
 end
 
 def bot_answer_to(message, user_name)
-  # If you want to add Bob to group chat, uncomment the next line
-  # return '' unless message.downcase.include?('bob') # Only answer to messages with 'bob'
 
   if message.downcase.include?('hello')
     # respond if a user says hello
@@ -49,10 +47,9 @@ def bot_jp_answer_to(message, user_name)
     "こんにちは#{user_name}さん！お元気ですか?"
   elsif message.match?(/.*元気.*(？|\?｜か)/)
     "私は元気です、#{user_name}さん"
-  elsif message.match?(/.*(le wagon|ワゴン|バゴン).*/i)
-    "#{user_name}さん... もしかして京都のLE WAGONプログラミング学校の話ですかね？ 素敵な画っこと思います！"
   elsif message.end_with?('?','？')
     "いい質問ですね、#{user_name}さん！"
+    fetch_chat_j(message)
   else
     ['そうですね！', '確かに！', '間違い無いですね！'].sample
   end
